@@ -18,10 +18,7 @@ export default function BackgoundPhoto(){
         document.getElementById("root").style.backgroundImage = `url(${url})`
     }
 
-
-    // "https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=nature
-    //https://api.unsplash.com/photos/random?orientation=landscape&query=calm&client_id=${accessKey}
-
+    // https://api.unsplash.com/photos/random?orientation=landscape&query=calm&client_id=${accessKey}
 
 
     useEffect(() => {
@@ -47,18 +44,15 @@ export default function BackgoundPhoto(){
     },[])
 
 
-
-
-
     return (
-        <div>
+        <div className={"background--credits"}>
             {data.firstName &&
-                <h3>
+                <h3 className={"text"}>
                     <a href={data.profileLink} target={"_blank"}>
                         @{data.firstName} {data.lastName}
                     </a>
                 </h3>}
-            <h3><a href={data.downloadLink} target={"_blank"}>Download Photo</a></h3>
+            <h3 className={"text"}><a href={data.downloadLink} target={"_blank"}>Download Photo</a></h3>
         </div>
     )
 }
