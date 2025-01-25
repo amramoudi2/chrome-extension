@@ -96,13 +96,19 @@ main{
   height: 100%;
 }
 
+.main--section h2{
+  font-size: 3rem;
+  font-family: 'Funnel Sans', sans-serif;
+  margin: 0;
+}
+
 .main--section h1{
   font-size: 5rem;
   font-family: 'Funnel Sans', sans-serif;
-  margin: 10px;
+  margin: 10px 0 0 0;
 }
 
-input{
+.input--main{
   padding: 5px 15px;
   width: 400px;
   height: 50px;
@@ -110,14 +116,18 @@ input{
   border: rgba(0, 0, 0, 0.4) 2px solid;
   border-radius: 15px;
   color: #fff;
-}
-
-input::placeholder{
-  font-family: "Macondo", serif;
+  box-shadow: #c0c0c0 0 0 120px;
+  font-family: "Funnel Sans", serif;
   font-size: 1.2rem;
 }
 
-input:focus{
+.input--main::placeholder{
+  font-family: "Macondo", serif;
+  font-size: 1.2rem;
+  color: #fff;
+}
+
+.input--main:focus{
   outline: none;
 }
 
@@ -126,4 +136,73 @@ input:focus{
   bottom: 0;
   left: 0;
   padding: 10px;
+}
+
+button{
+  display: flex;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: 10%;
+  background-color: rgba(239, 239, 239, 0.2);
+  box-shadow: #c0c0c0 0 0 120px;
+  cursor: pointer;
+  padding: 5px;
+}
+
+button img{
+  transition: all 0.5s ease;
+}
+
+button:hover img{
+  rotate: 20deg;
+}
+
+.time--display--format{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.settings{
+  position: absolute;
+  bottom: 0;
+  top:0;
+  left: 0;
+  right: 0;
+  margin: auto auto;
+  width: 70vw;
+  height: 90vh;
+  max-width: 900px;
+  max-height: 1200px;
+  background-color: rgba(44, 44, 44, 0.5);
+  border-radius: 15px;
+  transition: all 0.5s ease;
+  padding: 20px;
+}
+
+.container {
+  font-size: 3.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 12px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.check--box--settings{
+  position: relative;
+  opacity: 1;
+  margin-top: 10px;
+  cursor: pointer;
+  height: 30px;
+  width: 30px;
 }
