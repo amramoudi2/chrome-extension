@@ -6,21 +6,32 @@ import MainSection from "./MainSection.jsx";
 import settingsSvg from "./assets/settings.svg"
 import "./index.css"
 import TimeDisplayFormat from "./settingsOptions/TimeDisplayFormat.jsx";
+import DisplayTimeBy from "./settingsOptions/displayTimeBy.jsx";
 
 export default function App() {
 
-    const getIs24Hours = localStorage.getItem("is24Hours");
     const [displaySettings, setDisplaySettings] = useState(false);
-    const [hours, setHours] = useState(JSON.parse(getIs24Hours) || false);
+    const [displayTimeBy, setDisplayTimeBy] = useState(
+        JSON.parse(localStorage.getItem("displayTimeBy")) || "medium");
+    const [hours, setHours] = useState(
+        JSON.parse(localStorage.getItem("is24Hours")) || false);
 
-    function handleClick(e){
-        const value = e.target.checked;
+    function handleCheckBoxClick(e){
+        let value = e.target.checked;
+        if(displayTimeBy === "small"){
+            setDisplayTimeBy("short")
+            localStorage.setItem("displayTimeBy", JSON.stringify("short"));
+        }
         setHours(value)
+        localStorage.setItem("is24Hours", JSON.stringify(value));
     }
 
-    useEffect(() => {
-        localStorage.setItem("is24Hours", hours);
-    }, [hours])
+    function handleRadioClick(e){
+        let value = e.target.value;
+        setDisplayTimeBy(value)
+        localStorage.setItem("displayTimeBy", JSON.stringify(value));
+    }
+
 
     function toggleSettings() {
         setDisplaySettings(!displaySettings);
@@ -34,13 +45,19 @@ export default function App() {
                 <AdviceAPI/>
             </header>
             <main>
-                <MainSection is24Hours={hours}/>
+                <MainSection displayTimeBy={displayTimeBy} is24Hours={hours}/>
             </main>
             <BackgoundPhoto />
             <div style={{display: displaySettings ? "block" : "none"}} className="settings">
+                <h1 className={"close"} onClick={() => setDisplaySettings(false)}>X</h1>
                 <TimeDisplayFormat
                     hours = {hours}
-                    handleClick = {handleClick}
+                    handleClick = {handleCheckBoxClick}
+                />
+                <DisplayTimeBy
+                    displayTimeBy = {displayTimeBy}
+                    handleClick = {handleRadioClick}
+                    hours={hours}
                 />
             </div>
             <button onClick={toggleSettings}><img src={settingsSvg} alt="settings"/></button>

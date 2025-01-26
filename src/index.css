@@ -110,7 +110,7 @@ main{
 
 .input--main{
   padding: 5px 15px;
-  width: 400px;
+  width: 600px;
   height: 50px;
   background-color: rgba(239, 239, 239, 0.2);
   border: rgba(0, 0, 0, 0.4) 2px solid;
@@ -130,6 +130,37 @@ main{
 .input--main:focus{
   outline: none;
 }
+
+.add{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10%;
+  background-color: rgba(239, 239, 239, 0.2);
+  box-shadow: #c0c0c0 0 0 120px;
+  padding: 5px;
+  margin-top: 20px;
+  width: 60px;
+  height: 60px;
+  transition: all 0.5s ease-in;
+  cursor: pointer;
+}
+
+.add img{
+  width: 40px;
+  height: 40px;
+}
+
+.add:hover{
+  background-color: rgba(239, 239, 239, 0.4);
+  box-shadow: #d7d7d7 0 0 140px;
+}
+
+#add--menu{
+  width: 650px;
+  height: 300px;
+}
+
 
 .background--credits{
   position: absolute;
@@ -151,6 +182,7 @@ button{
   box-shadow: #c0c0c0 0 0 120px;
   cursor: pointer;
   padding: 5px;
+  transition: all 0.5s ease;
 }
 
 button img{
@@ -159,6 +191,10 @@ button img{
 
 button:hover img{
   rotate: 20deg;
+}
+button:hover{
+  background-color: rgba(239, 239, 239, 0.4);
+  box-shadow: #d7d7d7 0 0 140px;
 }
 
 .time--display--format{
@@ -185,6 +221,14 @@ button:hover img{
   padding: 20px;
 }
 
+.close{
+  position: absolute;
+  top: -15px;
+  right: 10px;
+  cursor: pointer;
+  color: #ea0606;
+}
+
 .container {
   font-size: 3.5rem;
   display: flex;
@@ -205,4 +249,25 @@ button:hover img{
   cursor: pointer;
   height: 30px;
   width: 30px;
+}
+
+.display--time--by{
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  align-items: start;
+  justify-content: center;
+}
+
+.align--radio{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+
+.add--close{
+  top: 0;
+  right: 20px;
 }

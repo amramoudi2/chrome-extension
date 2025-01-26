@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import backUpImage from "./assets/back-up-photo.jpg";
-
+import "./index.css"
 
 export default function BackgoundPhoto(){
 
@@ -25,7 +25,6 @@ export default function BackgoundPhoto(){
         fetch(``)
             .then((res) => res.json())
             .then(data => {
-                // data.urls.full
                 setData({
                     downloadLink: data.links.html,
                     photoURL: data.urls.raw,

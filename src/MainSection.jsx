@@ -1,7 +1,8 @@
 import {useEffect, useState} from "react";
+import MainShortCut from "./short-cut-links/MainShortCut.jsx";
 
 
-export default function MainSection({is24Hours}){
+export default function MainSection({is24Hours,displayTimeBy}){
 
     const [inputData, setInputData] = useState({
         "search" : ""
@@ -60,6 +61,17 @@ export default function MainSection({is24Hours}){
         }
     }
 
+    function getSmallTime(){
+        const first = time?.date.toLocaleString("en-US",
+            {hour12: !is24Hours, timeStyle: "short"}
+        ).slice(0,1)
+        const second = time?.date.toLocaleString("en-US",
+            {hour12: !is24Hours, timeStyle: "short"}
+        ).slice(-2,7)
+
+        return `${first} ${second}`
+    }
+
     return (
         <div className={"main--section"}>
 
@@ -68,9 +80,14 @@ export default function MainSection({is24Hours}){
             </h2>
 
             <h1 className={"text"}>
-                {time?.date.toLocaleString("en-US", {hour12: !is24Hours, timeStyle: "medium"})}
+                {
+                    displayTimeBy === "small" && !is24Hours?
+                        getSmallTime() :
+                        time?.date.toLocaleString("en-US",
+                            {hour12: !is24Hours, timeStyle: displayTimeBy}
+                        )
+                }
             </h1>
-
 
             <input
                 className={"input--main"}
@@ -81,6 +98,7 @@ export default function MainSection({is24Hours}){
                 onKeyDown={handleSubmit}
             />
 
+            <MainShortCut/>
         </div>
     )
 }
