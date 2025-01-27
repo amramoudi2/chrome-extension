@@ -159,13 +159,13 @@ input:focus{
   right: 10px;
   justify-content: center;
   align-items: center;
-  border: none;
   border-radius: 10%;
   background-color: rgba(239, 239, 239, 0.2);
   box-shadow: #c0c0c0 0 0 120px;
   cursor: pointer;
   padding: 5px;
   transition: all 0.5s ease;
+  border: rgba(85, 85, 85, 0.4) 2px solid;
 }
 
 .settings--button img{
@@ -292,6 +292,7 @@ input:focus{
   gap: 10px;
   margin: 20px 10px 0 10px;
   text-align: center;
+  border: rgba(85, 85, 85, 0.4) 2px solid;
 }
 
 .add img, .add a{

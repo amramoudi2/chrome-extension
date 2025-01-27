@@ -1,15 +1,15 @@
 import {useEffect, useState} from "react";
-import backUpImage from "../assets/back-up-photo.jpg";
+import backUpImage from "../assets/back-up.jpg";
 import "../index.css"
 
 export default function BackgoundPhoto(){
 
     const [data, setData] = useState({
-        downloadLink: "#",
+        downloadLink: "",
         photoURL: "",
-        firstName: "#",
-        lastName: "#",
-        profileLink:"#",
+        firstName: "",
+        lastName: "",
+        profileLink:"",
     })
 
     const accessKey = import.meta.env.VITE_ACCESS_KEY
@@ -31,10 +31,12 @@ export default function BackgoundPhoto(){
                     profileLink: data.user.links.html,
                 })
 
+                console.log(data)
                 setBackgroundImage(data.urls.full)
             })
             .catch(err => {
                 setData({...data, photoURL: backUpImage})
+                console.log(err)
                 setBackgroundImage(backUpImage)
             })
     },[])
@@ -48,7 +50,14 @@ export default function BackgoundPhoto(){
                         @{data.firstName} {data.lastName}
                     </a>
                 </h3>}
-            <h3 className={"text"}><a href={data.downloadLink} target={"_blank"}>Download Photo</a></h3>
+            {
+                <h3 className={"text"}><a href={data.downloadLink} target={"_blank"}>Download Photo From Unsplash</a></h3>
+                && data.downloadLink
+            }
+
+            {
+                !data.downloadLink && <h3 className={"text"}>can't connect to the servers</h3>
+            }
         </div>
     )
 }

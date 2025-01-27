@@ -49,10 +49,10 @@ export default function MainShortCut(){
 
     return (
         <div className={"add--main"}>
-            <div onClick={toggleAdd} className={"add"}>
+            <button style={{display: shortCutLinks.length === 10 ? "none" : "block"}} onClick={toggleAdd} className={"add"}>
                 <img src={plus} alt="add"/>
                 <p>Add Link</p>
-            </div>
+            </button>
             <div style={{display: displayAdd ? "block" : "none",zIndex:"5"}} id={"add--menu"} className={"settings"}>
                 <h2 className={"close add--close"} onClick={() => setDisplayAdd(false)}>X</h2>
                 <AddShortCut closeAdd={setDisplayAdd} setState={setShortCutLinks}/>

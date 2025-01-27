@@ -37,16 +37,12 @@ export default function MainSection({is24Hours,displayTimeBy}){
 
         getTime()
 
-        if(time?.date){
+        const interval = setInterval(() => {
+            getTime();
+        },1000)
 
-            const interval = setInterval(() => {
-                getTime();
-            },1000)
-
-            return () => clearInterval(interval)
-        }
-
-    },[time])
+        return () => clearInterval(interval)
+    },[])
 
 
 
