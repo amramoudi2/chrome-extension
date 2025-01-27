@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
-import {fetchData} from "./reusable-functions/reusable-functions.jsx";
-import "./index.css"
+import {fetchData} from "../reusable-functions/reusable-functions.jsx";
+import "../index.css"
 
 
 export default function AdviceAPI() {

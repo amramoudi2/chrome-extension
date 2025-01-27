@@ -1,5 +1,6 @@
 import {useEffect, useState} from "react";
 import MainShortCut from "./short-cut-links/MainShortCut.jsx";
+import "./index.css"
 
 
 export default function MainSection({is24Hours,displayTimeBy}){
@@ -36,7 +37,7 @@ export default function MainSection({is24Hours,displayTimeBy}){
 
         getTime()
 
-        if(time){
+        if(time?.date){
 
             const interval = setInterval(() => {
                 getTime();
@@ -45,7 +46,7 @@ export default function MainSection({is24Hours,displayTimeBy}){
             return () => clearInterval(interval)
         }
 
-    },[])
+    },[time])
 
 
 
@@ -61,16 +62,6 @@ export default function MainSection({is24Hours,displayTimeBy}){
         }
     }
 
-    function getSmallTime(){
-        const first = time?.date.toLocaleString("en-US",
-            {hour12: !is24Hours, timeStyle: "short"}
-        ).slice(0,1)
-        const second = time?.date.toLocaleString("en-US",
-            {hour12: !is24Hours, timeStyle: "short"}
-        ).slice(-2,7)
-
-        return `${first} ${second}`
-    }
 
     return (
         <div className={"main--section"}>
@@ -81,11 +72,9 @@ export default function MainSection({is24Hours,displayTimeBy}){
 
             <h1 className={"text"}>
                 {
-                    displayTimeBy === "small" && !is24Hours?
-                        getSmallTime() :
-                        time?.date.toLocaleString("en-US",
-                            {hour12: !is24Hours, timeStyle: displayTimeBy}
-                        )
+                    time?.date.toLocaleString("en-US",
+                        {hour12: !is24Hours, timeStyle: displayTimeBy}
+                    )
                 }
             </h1>
 

@@ -1,3 +1,5 @@
+import "../index.css"
+
 
 export default function TimeDisplayFormat({handleClick,hours}){
 

@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
-import backUpImage from "./assets/back-up-photo.jpg";
-import "./index.css"
+import backUpImage from "../assets/back-up-photo.jpg";
+import "../index.css"
 
 export default function BackgoundPhoto(){
 
@@ -18,23 +18,20 @@ export default function BackgoundPhoto(){
         document.getElementById("root").style.backgroundImage = `url(${url})`
     }
 
-    // https://api.unsplash.com/photos/random?orientation=landscape&query=calm&client_id=${accessKey}
-
 
     useEffect(() => {
-        fetch(``)
+        fetch(`https://api.unsplash.com/photos/random?orientation=landscape&query=calm,dark&client_id=${accessKey}`)
             .then((res) => res.json())
             .then(data => {
                 setData({
                     downloadLink: data.links.html,
-                    photoURL: data.urls.raw,
+                    photoURL: data.urls.full,
                     firstName: data.user.first_name,
                     lastName: data.user.last_name || "",
                     profileLink: data.user.links.html,
                 })
 
-                setBackgroundImage(data.urls.raw)
-                console.log(data)
+                setBackgroundImage(data.urls.full)
             })
             .catch(err => {
                 setData({...data, photoURL: backUpImage})

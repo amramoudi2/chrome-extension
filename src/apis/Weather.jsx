@@ -1,6 +1,6 @@
 import {useEffect,useState} from "react";
-import {fetchData} from "./reusable-functions/reusable-functions.jsx";
-
+import {fetchData} from "../reusable-functions/reusable-functions.jsx";
+import "../index.css"
 
 export default function Weather(){
 
@@ -42,7 +42,7 @@ export default function Weather(){
     return (
         <div className="weather">
             <div className={"weather--current"}>
-                <img src={data.current.condition.icon} alt={data.current.condition.text}/>
+                <img src={`https:${data.current.condition.icon}`} alt={data.current.condition.text}/>
                 <h1 className="text">{data.current.temp_c}°</h1>
             </div>
             <h3 className="text weather--text--h3">low: {data.current.dewpoint_c}</h3>

@@ -1,12 +1,12 @@
-import {useState, useEffect} from "react";
-import Weather from "./Weather.jsx";
-import BackgoundPhoto from "./BackgoundPhoto.jsx";
-import AdviceAPI from "./AdviceAPI.jsx";
+import {useState} from "react";
+import Weather from "./apis/Weather.jsx";
+import BackgoundPhoto from "./apis/BackgoundPhoto.jsx";
+import AdviceAPI from "./apis/AdviceAPI.jsx";
 import MainSection from "./MainSection.jsx";
 import settingsSvg from "./assets/settings.svg"
-import "./index.css"
 import TimeDisplayFormat from "./settingsOptions/TimeDisplayFormat.jsx";
 import DisplayTimeBy from "./settingsOptions/displayTimeBy.jsx";
+import "./index.css"
 
 export default function App() {
 
@@ -18,10 +18,6 @@ export default function App() {
 
     function handleCheckBoxClick(e){
         let value = e.target.checked;
-        if(displayTimeBy === "small"){
-            setDisplayTimeBy("short")
-            localStorage.setItem("displayTimeBy", JSON.stringify("short"));
-        }
         setHours(value)
         localStorage.setItem("is24Hours", JSON.stringify(value));
     }
@@ -48,19 +44,18 @@ export default function App() {
                 <MainSection displayTimeBy={displayTimeBy} is24Hours={hours}/>
             </main>
             <BackgoundPhoto />
-            <div style={{display: displaySettings ? "block" : "none"}} className="settings">
-                <h1 className={"close"} onClick={() => setDisplaySettings(false)}>X</h1>
+            <div style={{display: displaySettings ? "block" : "none",zIndex:10}} className="settings">
+                <h1 style={{fontSize:"3rem"}} className={"close"} onClick={() => setDisplaySettings(false)}>X</h1>
                 <TimeDisplayFormat
-                    hours = {hours}
                     handleClick = {handleCheckBoxClick}
+                    hours={hours}
                 />
                 <DisplayTimeBy
                     displayTimeBy = {displayTimeBy}
                     handleClick = {handleRadioClick}
-                    hours={hours}
                 />
             </div>
-            <button onClick={toggleSettings}><img src={settingsSvg} alt="settings"/></button>
+            <button className={"settings--button"} onClick={toggleSettings}><img src={settingsSvg} alt="settings"/></button>
         </div>
     )
 }

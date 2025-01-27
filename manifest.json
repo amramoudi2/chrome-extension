@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "Theme Switch",
+  "version": "1.0.0",
+  "description": "Change the theme of Google Chrome aka make it better!!",
+  "action": {
+    "default_icon": "icon.png",
+    "default_popup": "index.html"
+  },
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
+  "permissions": ["storage", "tabs", "activeTab", "scripting"]
+}

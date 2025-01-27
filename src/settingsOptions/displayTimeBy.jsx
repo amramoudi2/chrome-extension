@@ -1,12 +1,12 @@
 import "../index.css"
 
-export default function DisplayTimeBy({handleClick,displayTimeBy,hours}){
+export default function DisplayTimeBy({handleClick,displayTimeBy}){
 
 
     return (
         <div className="display--time--by">
             <div className="align--radio">
-                <label className={"text"} htmlFor={"medium"}>display full time eg: 6:30:24pm</label>
+                <label className={"text radio--labels"} htmlFor={"medium"}>display full time</label>
                 <input
                     value={"medium"}
                     name={"display--time"}
@@ -14,10 +14,11 @@ export default function DisplayTimeBy({handleClick,displayTimeBy,hours}){
                     type={"radio"}
                     defaultChecked={displayTimeBy === "medium"}
                     onClick={handleClick}
+                    className={"radio--buttons"}
                 />
             </div>
             <div className="align--radio">
-                <label className={"text"} htmlFor={"min--hours"}>display minutes and hours only</label>
+                <label className={"text radio--labels"} htmlFor={"min--hours"}>display minutes and hours only</label>
                 <input
                     value={"short"}
                     name={"display--time"}
@@ -25,18 +26,7 @@ export default function DisplayTimeBy({handleClick,displayTimeBy,hours}){
                     type={"radio"}
                     defaultChecked={displayTimeBy === "short"}
                     onClick={handleClick}
-                />
-            </div>
-            <div className="align--radio">
-                <label className={"text"} htmlFor={"hours"}>display hours only</label>
-                <input
-                    value={"small"}
-                    name={"display--time"}
-                    id={"hours"}
-                    type={"radio"}
-                    defaultChecked={displayTimeBy === "small"}
-                    onClick={handleClick}
-                    disabled={hours}
+                    className={"radio--buttons"}
                 />
             </div>
         </div>
