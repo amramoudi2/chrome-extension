@@ -51,8 +51,7 @@ export default function BackgoundPhoto(){
                     </a>
                 </h3>}
             {
-                <h3 className={"text"}><a href={data.downloadLink} target={"_blank"}>Download Photo From Unsplash</a></h3>
-                && data.downloadLink
+                data.downloadLink && <h3 className={"text"}><a href={data.downloadLink} target={"_blank"}>Download Photo From Unsplash</a></h3>
             }
 
             {
